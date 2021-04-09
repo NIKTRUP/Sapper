@@ -1,7 +1,11 @@
 ﻿
 namespace Sapper
 {
+<<<<<<< HEAD
+    partial class Sapper
+=======
     partial class Form1
+>>>>>>> f7964951963a9a3215058a6b6d7ff4b33e8bfe06
     {
         /// <summary>
         /// Обязательная переменная конструктора.
