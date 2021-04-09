@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace Sapper
 {
-    public partial class Sapper : Form
+    public partial class Victory : Form
     {
-        public Sapper()
+        public Victory()
         {
             InitializeComponent();
+        }
+
+        private void Ok_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+        }
+
+        private void Victory_Load(object sender, EventArgs e)
+        {
+            this.ControlBox = false;
         }
     }
 }

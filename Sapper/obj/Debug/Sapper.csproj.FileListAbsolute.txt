@@ -1,0 +1,13 @@
+C:\Users\nikol\source\repos\Sapper\Sapper\obj\Debug\Sapper.csprojAssemblyReference.cache
+C:\Users\nikol\source\repos\Sapper\Sapper\obj\Debug\Sapper.AboutForm.resources
+C:\Users\nikol\source\repos\Sapper\Sapper\obj\Debug\Sapper.Losing.resources
+C:\Users\nikol\source\repos\Sapper\Sapper\obj\Debug\Sapper.Sapper.resources
+C:\Users\nikol\source\repos\Sapper\Sapper\obj\Debug\Sapper.Properties.Resources.resources
+C:\Users\nikol\source\repos\Sapper\Sapper\obj\Debug\Sapper.Victory.resources
+C:\Users\nikol\source\repos\Sapper\Sapper\obj\Debug\Sapper.csproj.GenerateResource.cache
+C:\Users\nikol\source\repos\Sapper\Sapper\obj\Debug\Sapper.csproj.CoreCompileInputs.cache
+C:\Users\nikol\source\repos\Sapper\Sapper\bin\Debug\Sapper.exe.config
+C:\Users\nikol\source\repos\Sapper\Sapper\bin\Debug\Sapper.exe
+C:\Users\nikol\source\repos\Sapper\Sapper\bin\Debug\Sapper.pdb
+C:\Users\nikol\source\repos\Sapper\Sapper\obj\Debug\Sapper.exe
+C:\Users\nikol\source\repos\Sapper\Sapper\obj\Debug\Sapper.pdb
