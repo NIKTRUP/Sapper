@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Media;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,8 +17,10 @@ namespace Sapper
         int cellWidth = 30, cellHeight = 30, changeLocation = 30;
         int bombCreationProbability = 20;
         int start_x = 10, start_y = 50;
-        //bool registrationFirstClickBomb = false;
         ButtonExtended[,] allButtons;
+        SoundPlayer music;
+        bool musicScwitch = true;
+
 
         // изменяемые компьютером
         int amountOfOpenedСells = 0, amountOfBombs = 0;
@@ -25,9 +28,9 @@ namespace Sapper
         bool firstclick = true;
 
         // изменяемые человеком
-        int fieldWidth = 270, fieldHeight = 270;
-        int sizeFieldInCells = 9;
-        int timeLimitInMminutes = 10;
+        int fieldWidth, fieldHeight;
+        int sizeFieldInCells ;
+        int timeLimitInMminutes ;
 
         public Sapper()
         {
@@ -38,8 +41,18 @@ namespace Sapper
             label_amountOfSeconds.Text = "00";
             label_amountOfMinutes.Text = "00";
         }
+        private void Init(int fieldWidth, int fieldHeight, int sizeFieldInCells, int timeLimitInMminutes)
+        {
+            this.fieldWidth = fieldWidth;
+            this.fieldHeight = fieldHeight;
+            this.sizeFieldInCells = sizeFieldInCells;
+            this.timeLimitInMminutes = timeLimitInMminutes;
+        }
         private void Sapper_Load(object sender, EventArgs e)
         {
+            music = new SoundPlayer(@"C:\\Users\\nikol\\source\\repos\\Sapper\\Music\\guitar.wav");
+            StartMusic();
+            Init(270, 270, 9, 10);
             CreateGame();
         }
         private void CreateGame()
@@ -177,7 +190,7 @@ namespace Sapper
                     {
                         button.isBomb = false;
                         amountOfBombs--;
-                       // registrationFirstClickBomb = true;
+                        // registrationFirstClickBomb = true;
                     }
                     firstclick = false;
                 }
@@ -206,7 +219,6 @@ namespace Sapper
                 }
             }
         }
-
         void OpenRegion(int index_x , int index_y , ButtonExtended button)
         {
             Queue<ButtonExtended> queue = new Queue<ButtonExtended>();
@@ -292,7 +304,6 @@ namespace Sapper
             }
             return bombcount;
         }
-        
         void ShowImageInsteadOfNumbers(int index_x, int index_y, ButtonExtended button)
         {
             if (!button.isBomb)
@@ -335,7 +346,6 @@ namespace Sapper
                 }
             }
         }
-        
         void RegistrationOfVictory()
         {
             int cells = sizeFieldInCells * sizeFieldInCells;
@@ -361,34 +371,75 @@ namespace Sapper
             }
         }
 
+        private void bt_musicSwitch_Click(object sender, EventArgs e)
+        {
+            if (musicScwitch)
+            {
+                musicScwitch = false;
+                bt_musicSwitch.Text = "Включить музыку";
+            }
+            else 
+            {
+                musicScwitch = true;
+                bt_musicSwitch.Text = "Выключить музыку";
+            }
+        }
+
+        private void ClearMap()
+        {
+            amountOfOpenedСells = 0;
+            amountOfBombs = 0;
+            foreach (ButtonExtended item in allButtons)
+            {
+                if (Controls.Contains(item))
+                {
+                    Controls.Remove(item);
+                }
+            }
+        }
         private void bt__Size9x9_Click(object sender, EventArgs e)
         {
-            Application.Restart();
-            fieldWidth = 270;
-            fieldHeight = 270;
-            sizeFieldInCells = 9;
-            timeLimitInMminutes = 10;
+            ClearMap();
+            StartMusic();
+            firstclick = true;
+            Init(270, 270, 9, 10);
             CreateGame();
+            DisplayingBombs();
+            DisplayingAllEmptyCells();
+            DisplayingOpenedCells();
         }//To DO
         private void bt__Size18x18_Click(object sender, EventArgs e)
         {
-            Application.Restart();
-            fieldWidth = 540;
-            fieldHeight = 540;
-            sizeFieldInCells = 18;
-            timeLimitInMminutes = 40;
+            ClearMap();
+            StartMusic();
+            firstclick = true;
+            Init(540, 540, 18, 40);
             CreateGame();
+            DisplayingBombs();
+            DisplayingAllEmptyCells();
+            DisplayingOpenedCells();
 
-        }//To Do
+        }
         private void bt__Size36x36_Click(object sender, EventArgs e)
         {
-            Application.Restart();
-            fieldWidth = 1080;
-            fieldHeight = 1080;
-            sizeFieldInCells = 36;
-            timeLimitInMminutes = 99;
+            ClearMap();
+            StartMusic();
+            firstclick = true;
+            Init(1080, 1080, 36, 99);
             CreateGame();
-        }//To DO
+            DisplayingBombs();
+            DisplayingAllEmptyCells();
+            DisplayingOpenedCells();
+        }
+
+        private void StartMusic()
+        {
+            if (musicScwitch)
+            {
+                music.Play();
+            }
+        }
+
         private void bt_menu_game_Exit_Click(object sender, EventArgs e)
         {
             Application.Exit();

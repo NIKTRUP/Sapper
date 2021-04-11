@@ -40,6 +40,7 @@ namespace Sapper
             this.bt_menu_game_ResultsTable = new System.Windows.Forms.ToolStripMenuItem();
             this.bt_menu_game_HightScore = new System.Windows.Forms.ToolStripMenuItem();
             this.bt_menu_game_Exit = new System.Windows.Forms.ToolStripMenuItem();
+            this.bt_musicSwitch = new System.Windows.Forms.ToolStripMenuItem();
             this.bt_reference = new System.Windows.Forms.ToolStripMenuItem();
             this.bt_aboutGame = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_general = new System.Windows.Forms.Panel();
@@ -92,7 +93,8 @@ namespace Sapper
             this.bt_menu_game_NewGame,
             this.bt_menu_game_ResultsTable,
             this.bt_menu_game_HightScore,
-            this.bt_menu_game_Exit});
+            this.bt_menu_game_Exit,
+            this.bt_musicSwitch});
             this.bt_menu_game.Name = "bt_menu_game";
             this.bt_menu_game.Size = new System.Drawing.Size(46, 20);
             this.bt_menu_game.Text = "Игра";
@@ -146,6 +148,13 @@ namespace Sapper
             this.bt_menu_game_Exit.Size = new System.Drawing.Size(189, 22);
             this.bt_menu_game_Exit.Text = "Выйти";
             this.bt_menu_game_Exit.Click += new System.EventHandler(this.bt_menu_game_Exit_Click);
+            // 
+            // bt_musicSwitch
+            // 
+            this.bt_musicSwitch.Name = "bt_musicSwitch";
+            this.bt_musicSwitch.Size = new System.Drawing.Size(189, 22);
+            this.bt_musicSwitch.Text = "Выключить музыку";
+            this.bt_musicSwitch.Click += new System.EventHandler(this.bt_musicSwitch_Click);
             // 
             // bt_reference
             // 
@@ -366,6 +375,7 @@ namespace Sapper
         private System.Windows.Forms.Label label_amountOfOpenedCells;
         private System.Windows.Forms.Label label_bombs;
         private System.Windows.Forms.Label label_amountOfBombs;
+        private System.Windows.Forms.ToolStripMenuItem bt_musicSwitch;
     }
 }
 
