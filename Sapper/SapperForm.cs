@@ -1,4 +1,6 @@
-﻿using System;
+﻿using System.IO;
+using System.Threading;
+using System;
 using System.Media;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,11 +16,14 @@ namespace Sapper
     public partial class Sapper : Form
     {
         // не изменяемые
-        int cellWidth = 30, cellHeight = 30, changeLocation = 30;
+        int cellWidth = 50, cellHeight = 50, changeLocation = 50;
         int bombCreationProbability = 20;
         int start_x = 10, start_y = 50;
         ButtonExtended[,] allButtons;
-        SoundPlayer music;
+        SoundPlayer musicLoad;
+        SoundPlayer musicLose;
+        SoundPlayer musicWin;
+        HighScoreTableForm tableHighScore = new HighScoreTableForm();
         bool musicScwitch = true;
 
 
@@ -40,6 +45,8 @@ namespace Sapper
             minutes = 0;
             label_amountOfSeconds.Text = "00";
             label_amountOfMinutes.Text = "00";
+            ReadHighScore();
+            //ThreadStart timer = new ThreadStart(gameTimer_Tick);
         }
         private void Init(int fieldWidth, int fieldHeight, int sizeFieldInCells, int timeLimitInMminutes)
         {
@@ -50,9 +57,9 @@ namespace Sapper
         }
         private void Sapper_Load(object sender, EventArgs e)
         {
-            music = new SoundPlayer(@"C:\\Users\\nikol\\source\\repos\\Sapper\\Music\\guitar.wav");
-            StartMusic();
-            Init(270, 270, 9, 10);
+            musicLoad = new SoundPlayer(@"C:\\Users\\nikol\\source\\repos\\Sapper\\Music\\guitar.wav");
+            StartMusicLoad();
+            Init(450, 450, 9, 10);
             CreateGame();
         }
         private void CreateGame()
@@ -77,7 +84,7 @@ namespace Sapper
                     allButtons[index_x, index_y] = button;
                     Controls.Add(button);
                     button.MouseUp += new MouseEventHandler(ClickOnСell);
-                    button.Image = Image.FromFile("C:\\Users\\nikol\\source\\repos\\Sapper\\Images\\back.png");
+                    button.Image = Image.FromFile("C:\\Users\\nikol\\source\\repos\\Sapper\\Images\\backGround.png");
                 }
             }
         }
@@ -105,13 +112,6 @@ namespace Sapper
         }
         private void DisplayingAllEmptyCells()
         {
-            /*
-            if (registrationFirstClickBomb == true)
-            {
-                label_OpenedCells.Text = "0" + 1;
-                registrationFirstClickBomb = false;
-            }
-            */
             if (sizeFieldInCells * sizeFieldInCells - amountOfBombs < 10)
             {
                 label_OpenedCells.Text = "0" + (sizeFieldInCells * sizeFieldInCells - amountOfBombs).ToString();
@@ -164,8 +164,7 @@ namespace Sapper
             else
             {
                 gameTimer.Enabled = false;
-                ButtonExtended button = new ButtonExtended();
-                Explode(button);
+                Explode();
                 
                 
             }
@@ -190,13 +189,12 @@ namespace Sapper
                     {
                         button.isBomb = false;
                         amountOfBombs--;
-                        // registrationFirstClickBomb = true;
                     }
                     firstclick = false;
                 }
                 if (button.isBomb)
                 {
-                    Explode(button);
+                    Explode();
                 }
                 else
                 {
@@ -204,7 +202,7 @@ namespace Sapper
                 }
             }
         }
-        private static void RightClick(MouseEventArgs e, ButtonExtended button)
+        private void RightClick(MouseEventArgs e, ButtonExtended button)
         {
             if (e.Button == MouseButtons.Right && !button.isOpen)
             {
@@ -213,9 +211,16 @@ namespace Sapper
                 {
                     button.Image = Image.FromFile("C:\\Users\\nikol\\source\\repos\\Sapper\\Images\\flag.png");
                 }
-                else
+                else if (!button.isQuestion)
                 {
-                    button.Image = Image.FromFile("C:\\Users\\nikol\\source\\repos\\Sapper\\Images\\back.png");
+                    button.Image = Image.FromFile("C:\\Users\\nikol\\source\\repos\\Sapper\\Images\\question.png");
+                    button.isQuestion = !button.isQuestion;
+                    button.isFlag = false;
+                }
+                else if(button.isQuestion)
+                {
+                    button.Image = Image.FromFile("C:\\Users\\nikol\\source\\repos\\Sapper\\Images\\backGround.png");
+                    button.isQuestion = !button.isQuestion;
                 }
             }
         }
@@ -266,12 +271,22 @@ namespace Sapper
                 ShowImageInsteadOfNumbers(index_x, index_y, button);
             }
         }
-        void Explode(ButtonExtended button)
+        void Explode()
         {
             ShowBombs();
+            StartMusicLose();
+            gameTimer.Enabled = false;
+            SaveHighScore(label_amountOfMinutes.Text , label_amountOfSeconds.Text);
             Losing checkLoser = new Losing();
             checkLoser.ShowDialog();
-            gameTimer.Enabled = false;
+        }
+        private void StartMusicLose()
+        {
+            musicLose = new SoundPlayer(@"C:\\Users\\nikol\\source\\repos\\Sapper\\Music\\lose.wav");
+            if (musicScwitch)
+            {
+                musicLose.Play();
+            }
         }
         void EmptyСell(ButtonExtended button)
         {
@@ -310,7 +325,7 @@ namespace Sapper
             {
                 if (CountBombsAround(index_x, index_y) == 0)
                 {
-                    button.Image = Image.FromFile("C:\\Users\\nikol\\source\\repos\\Sapper\\Images\\whiteBackground.png");
+                    button.Image = Image.FromFile("C:\\Users\\nikol\\source\\repos\\Sapper\\Images\\whiteBackground2.png");
                 }
                 if (CountBombsAround(index_x, index_y) == 1)
                 {
@@ -354,11 +369,29 @@ namespace Sapper
             if (allEmptyCells == amountOfOpenedСells)
             {
                 ShowBombs();
+                StartMusicWin();
                 gameTimer.Enabled = false;
+                SaveHighScore(label_amountOfMinutes.Text, label_amountOfSeconds.Text);
                 Victory checkVictory = new Victory();
                 checkVictory.ShowDialog();
             }
 
+        }
+        
+        private void SaveHighScore(object minutes , object seconds)
+        {
+            string time = minutes.ToString()+ ":" + seconds.ToString();
+            tableHighScore.ListBox_HighScoreTable.Items.Add(time);
+        }
+        
+
+        private void StartMusicWin()
+        {
+            musicWin = new SoundPlayer(@"C:\\Users\\nikol\\source\\repos\\Sapper\\Music\\win.wav");
+            if (musicScwitch)
+            {
+                musicWin.Play();
+            }
         }
         private void ShowBombs()
         {
@@ -366,11 +399,10 @@ namespace Sapper
             {
                 if (item.isBomb)
                 {
-                    item.Image = Image.FromFile("C:\\Users\\nikol\\source\\repos\\Sapper\\Images\\bomb.png");
+                    item.Image = Image.FromFile("C:\\Users\\nikol\\source\\repos\\Sapper\\Images\\navalMine.png");
                 }
             }
         }
-
         private void bt_musicSwitch_Click(object sender, EventArgs e)
         {
             if (musicScwitch)
@@ -384,7 +416,6 @@ namespace Sapper
                 bt_musicSwitch.Text = "Выключить музыку";
             }
         }
-
         private void ClearMap()
         {
             amountOfOpenedСells = 0;
@@ -400,7 +431,7 @@ namespace Sapper
         private void bt__Size9x9_Click(object sender, EventArgs e)
         {
             ClearMap();
-            StartMusic();
+            StartMusicLoad();
             firstclick = true;
             Init(270, 270, 9, 10);
             CreateGame();
@@ -411,9 +442,9 @@ namespace Sapper
         private void bt__Size18x18_Click(object sender, EventArgs e)
         {
             ClearMap();
-            StartMusic();
+            StartMusicLoad();
             firstclick = true;
-            Init(540, 540, 18, 40);
+            Init(900, 900, 18, 40);
             CreateGame();
             DisplayingBombs();
             DisplayingAllEmptyCells();
@@ -423,23 +454,25 @@ namespace Sapper
         private void bt__Size36x36_Click(object sender, EventArgs e)
         {
             ClearMap();
-            StartMusic();
+            StartMusicLoad();
             firstclick = true;
-            Init(1080, 1080, 36, 99);
+            Init(1800, 1800, 36, 99);
             CreateGame();
             DisplayingBombs();
             DisplayingAllEmptyCells();
             DisplayingOpenedCells();
         }
-
-        private void StartMusic()
+        private void bt_menu_game_HighScore_Click(object sender, EventArgs e)
+        {
+            tableHighScore.Visible = true;
+        }
+        private void StartMusicLoad()
         {
             if (musicScwitch)
             {
-                music.Play();
+                musicLoad.Play();
             }
         }
-
         private void bt_menu_game_Exit_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -449,12 +482,47 @@ namespace Sapper
             AboutForm about = new AboutForm();
             about.Show();
         }
+        private void SetHighScore()
+        {
+            
+            StreamWriter writer = new StreamWriter("HighScore.txt");
+            foreach (string item in tableHighScore.ListBox_HighScoreTable.Items)
+            {
+                if ( (sizeFieldInCells * sizeFieldInCells - amountOfBombs) == amountOfOpenedСells)
+                { 
+                writer.Write(item+"\n");
+                }
+                else 
+                {
+                    writer.Write(item+"\n");
+                }
+            }
+            writer.Close();
+        }
+        private void ReadHighScore()
+        {
+            StreamReader readerHighScore = new StreamReader("HighScore.txt");
+            string fileString = readerHighScore.ReadToEnd();
+            string[] fileData = fileString.Split('\n');
+            for (int i = 0; i < fileData.Length; i++)
+            {
+                tableHighScore.ListBox_HighScoreTable.Items.Add(fileData[i]);
+            }
+            readerHighScore.Close();
+        }
+        
+        private void Sapper_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SetHighScore();
+        }
+
     }
 
     public partial class ButtonExtended : Button
     {
         public bool isBomb; 
         public bool isFlag;
+        public bool isQuestion;
         public bool isOpen;
         public int x_currectCell;
         public int y_currectCell;

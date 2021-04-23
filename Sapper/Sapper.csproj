@@ -52,6 +52,12 @@
     <Compile Include="AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="HighScoreTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HighScoreTable.Designer.cs">
+      <DependentUpon>HighScoreTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Losing.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +80,9 @@
     </Compile>
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HighScoreTable.resx">
+      <DependentUpon>HighScoreTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Losing.resx">
       <DependentUpon>Losing.cs</DependentUpon>

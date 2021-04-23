@@ -30,9 +30,9 @@ namespace Sapper
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutForm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label_About = new System.Windows.Forms.Label();
             this.label_Sapper = new System.Windows.Forms.Label();
             this.pictureBox = new System.Windows.Forms.PictureBox();
-            this.label_About = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.Ok = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
@@ -59,6 +59,18 @@ namespace Sapper
             this.tableLayoutPanel1.Size = new System.Drawing.Size(599, 249);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
+            // label_About
+            // 
+            this.label_About.AutoSize = true;
+            this.label_About.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label_About.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label_About.Location = new System.Drawing.Point(312, 0);
+            this.label_About.Name = "label_About";
+            this.label_About.Size = new System.Drawing.Size(284, 29);
+            this.label_About.TabIndex = 4;
+            this.label_About.Text = "Об игре:";
+            this.label_About.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // label_Sapper
             // 
             this.label_Sapper.AutoSize = true;
@@ -66,7 +78,7 @@ namespace Sapper
             this.label_Sapper.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label_Sapper.Location = new System.Drawing.Point(3, 0);
             this.label_Sapper.Name = "label_Sapper";
-            this.label_Sapper.Size = new System.Drawing.Size(302, 29);
+            this.label_Sapper.Size = new System.Drawing.Size(303, 29);
             this.label_Sapper.TabIndex = 0;
             this.label_Sapper.Text = "Сапёр:";
             this.label_Sapper.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -77,30 +89,18 @@ namespace Sapper
             this.pictureBox.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox.Image")));
             this.pictureBox.Location = new System.Drawing.Point(3, 32);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(302, 180);
+            this.pictureBox.Size = new System.Drawing.Size(303, 180);
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox.TabIndex = 3;
             this.pictureBox.TabStop = false;
             // 
-            // label_About
-            // 
-            this.label_About.AutoSize = true;
-            this.label_About.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label_About.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label_About.Location = new System.Drawing.Point(311, 0);
-            this.label_About.Name = "label_About";
-            this.label_About.Size = new System.Drawing.Size(285, 29);
-            this.label_About.TabIndex = 4;
-            this.label_About.Text = "Об игре:";
-            this.label_About.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // richTextBox1
             // 
             this.richTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.richTextBox1.Location = new System.Drawing.Point(311, 32);
+            this.richTextBox1.Location = new System.Drawing.Point(312, 32);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(285, 180);
+            this.richTextBox1.Size = new System.Drawing.Size(284, 180);
             this.richTextBox1.TabIndex = 5;
             this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 

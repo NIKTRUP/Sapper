@@ -52,13 +52,13 @@ namespace Sapper
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 18.56061F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 81.43939F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(410, 323);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(372, 323);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // Ok
             // 
             this.Ok.Dock = System.Windows.Forms.DockStyle.Right;
-            this.Ok.Location = new System.Drawing.Point(332, 292);
+            this.Ok.Location = new System.Drawing.Point(294, 292);
             this.Ok.Name = "Ok";
             this.Ok.Size = new System.Drawing.Size(75, 28);
             this.Ok.TabIndex = 0;
@@ -73,7 +73,7 @@ namespace Sapper
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(404, 53);
+            this.label1.Size = new System.Drawing.Size(366, 53);
             this.label1.TabIndex = 1;
             this.label1.Text = "Вы выиграли";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -84,7 +84,7 @@ namespace Sapper
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(3, 56);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(404, 230);
+            this.pictureBox1.Size = new System.Drawing.Size(366, 230);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
@@ -93,7 +93,7 @@ namespace Sapper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(410, 323);
+            this.ClientSize = new System.Drawing.Size(372, 323);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Victory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -30,6 +30,7 @@ namespace Sapper
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sapper));
             this.panel_Header = new System.Windows.Forms.Panel();
             this.Menu = new System.Windows.Forms.MenuStrip();
             this.bt_menu_game = new System.Windows.Forms.ToolStripMenuItem();
@@ -37,11 +38,9 @@ namespace Sapper
             this.bt__Size9x9 = new System.Windows.Forms.ToolStripMenuItem();
             this.bt__Size18x18 = new System.Windows.Forms.ToolStripMenuItem();
             this.bt__Size36x36 = new System.Windows.Forms.ToolStripMenuItem();
-            this.bt_menu_game_ResultsTable = new System.Windows.Forms.ToolStripMenuItem();
-            this.bt_menu_game_HightScore = new System.Windows.Forms.ToolStripMenuItem();
+            this.bt_menu_game_HighScore = new System.Windows.Forms.ToolStripMenuItem();
             this.bt_menu_game_Exit = new System.Windows.Forms.ToolStripMenuItem();
             this.bt_musicSwitch = new System.Windows.Forms.ToolStripMenuItem();
-            this.bt_reference = new System.Windows.Forms.ToolStripMenuItem();
             this.bt_aboutGame = new System.Windows.Forms.ToolStripMenuItem();
             this.panel_general = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -72,18 +71,17 @@ namespace Sapper
             this.panel_Header.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_Header.Location = new System.Drawing.Point(0, 0);
             this.panel_Header.Name = "panel_Header";
-            this.panel_Header.Size = new System.Drawing.Size(529, 25);
+            this.panel_Header.Size = new System.Drawing.Size(470, 25);
             this.panel_Header.TabIndex = 0;
             // 
             // Menu
             // 
             this.Menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bt_menu_game,
-            this.bt_reference,
             this.bt_aboutGame});
             this.Menu.Location = new System.Drawing.Point(0, 0);
             this.Menu.Name = "Menu";
-            this.Menu.Size = new System.Drawing.Size(529, 24);
+            this.Menu.Size = new System.Drawing.Size(470, 24);
             this.Menu.TabIndex = 0;
             this.Menu.Text = "Menu";
             // 
@@ -91,8 +89,7 @@ namespace Sapper
             // 
             this.bt_menu_game.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.bt_menu_game_NewGame,
-            this.bt_menu_game_ResultsTable,
-            this.bt_menu_game_HightScore,
+            this.bt_menu_game_HighScore,
             this.bt_menu_game_Exit,
             this.bt_musicSwitch});
             this.bt_menu_game.Name = "bt_menu_game";
@@ -105,12 +102,14 @@ namespace Sapper
             this.bt__Size9x9,
             this.bt__Size18x18,
             this.bt__Size36x36});
+            this.bt_menu_game_NewGame.Image = ((System.Drawing.Image)(resources.GetObject("bt_menu_game_NewGame.Image")));
             this.bt_menu_game_NewGame.Name = "bt_menu_game_NewGame";
-            this.bt_menu_game_NewGame.Size = new System.Drawing.Size(189, 22);
+            this.bt_menu_game_NewGame.Size = new System.Drawing.Size(182, 22);
             this.bt_menu_game_NewGame.Text = "Новая игра";
             // 
             // bt__Size9x9
             // 
+            this.bt__Size9x9.Image = ((System.Drawing.Image)(resources.GetObject("bt__Size9x9.Image")));
             this.bt__Size9x9.Name = "bt__Size9x9";
             this.bt__Size9x9.Size = new System.Drawing.Size(177, 22);
             this.bt__Size9x9.Text = "Размер поля:9x9";
@@ -118,6 +117,7 @@ namespace Sapper
             // 
             // bt__Size18x18
             // 
+            this.bt__Size18x18.Image = ((System.Drawing.Image)(resources.GetObject("bt__Size18x18.Image")));
             this.bt__Size18x18.Name = "bt__Size18x18";
             this.bt__Size18x18.Size = new System.Drawing.Size(177, 22);
             this.bt__Size18x18.Text = "Размер поля:18x18";
@@ -125,42 +125,35 @@ namespace Sapper
             // 
             // bt__Size36x36
             // 
+            this.bt__Size36x36.Image = ((System.Drawing.Image)(resources.GetObject("bt__Size36x36.Image")));
             this.bt__Size36x36.Name = "bt__Size36x36";
             this.bt__Size36x36.Size = new System.Drawing.Size(177, 22);
             this.bt__Size36x36.Text = "Размер поля:36x36";
             this.bt__Size36x36.Click += new System.EventHandler(this.bt__Size36x36_Click);
             // 
-            // bt_menu_game_ResultsTable
+            // bt_menu_game_HighScore
             // 
-            this.bt_menu_game_ResultsTable.Name = "bt_menu_game_ResultsTable";
-            this.bt_menu_game_ResultsTable.Size = new System.Drawing.Size(189, 22);
-            this.bt_menu_game_ResultsTable.Text = "Таблица результатов";
-            // 
-            // bt_menu_game_HightScore
-            // 
-            this.bt_menu_game_HightScore.Name = "bt_menu_game_HightScore";
-            this.bt_menu_game_HightScore.Size = new System.Drawing.Size(189, 22);
-            this.bt_menu_game_HightScore.Text = "Рекорды";
+            this.bt_menu_game_HighScore.Image = ((System.Drawing.Image)(resources.GetObject("bt_menu_game_HighScore.Image")));
+            this.bt_menu_game_HighScore.Name = "bt_menu_game_HighScore";
+            this.bt_menu_game_HighScore.Size = new System.Drawing.Size(182, 22);
+            this.bt_menu_game_HighScore.Text = "Таблица рекордов";
+            this.bt_menu_game_HighScore.Click += new System.EventHandler(this.bt_menu_game_HighScore_Click);
             // 
             // bt_menu_game_Exit
             // 
+            this.bt_menu_game_Exit.Image = ((System.Drawing.Image)(resources.GetObject("bt_menu_game_Exit.Image")));
             this.bt_menu_game_Exit.Name = "bt_menu_game_Exit";
-            this.bt_menu_game_Exit.Size = new System.Drawing.Size(189, 22);
+            this.bt_menu_game_Exit.Size = new System.Drawing.Size(182, 22);
             this.bt_menu_game_Exit.Text = "Выйти";
             this.bt_menu_game_Exit.Click += new System.EventHandler(this.bt_menu_game_Exit_Click);
             // 
             // bt_musicSwitch
             // 
+            this.bt_musicSwitch.Image = ((System.Drawing.Image)(resources.GetObject("bt_musicSwitch.Image")));
             this.bt_musicSwitch.Name = "bt_musicSwitch";
-            this.bt_musicSwitch.Size = new System.Drawing.Size(189, 22);
+            this.bt_musicSwitch.Size = new System.Drawing.Size(182, 22);
             this.bt_musicSwitch.Text = "Выключить музыку";
             this.bt_musicSwitch.Click += new System.EventHandler(this.bt_musicSwitch_Click);
-            // 
-            // bt_reference
-            // 
-            this.bt_reference.Name = "bt_reference";
-            this.bt_reference.Size = new System.Drawing.Size(65, 20);
-            this.bt_reference.Text = "Справка";
             // 
             // bt_aboutGame
             // 
@@ -178,7 +171,7 @@ namespace Sapper
             this.panel_general.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_general.Location = new System.Drawing.Point(0, 25);
             this.panel_general.Name = "panel_general";
-            this.panel_general.Size = new System.Drawing.Size(529, 15);
+            this.panel_general.Size = new System.Drawing.Size(470, 15);
             this.panel_general.TabIndex = 1;
             // 
             // panel1
@@ -186,7 +179,7 @@ namespace Sapper
             this.panel1.Controls.Add(this.label_bombs);
             this.panel1.Controls.Add(this.label_amountOfBombs);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(215, 0);
+            this.panel1.Location = new System.Drawing.Point(221, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(120, 15);
             this.panel1.TabIndex = 3;
@@ -273,7 +266,7 @@ namespace Sapper
             this.panel_bombs.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel_bombs.Location = new System.Drawing.Point(0, 0);
             this.panel_bombs.Name = "panel_bombs";
-            this.panel_bombs.Size = new System.Drawing.Size(215, 15);
+            this.panel_bombs.Size = new System.Drawing.Size(221, 15);
             this.panel_bombs.TabIndex = 0;
             // 
             // label_allEmptyCells
@@ -324,11 +317,13 @@ namespace Sapper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(529, 391);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(470, 513);
             this.Controls.Add(this.panel_general);
             this.Controls.Add(this.panel_Header);
             this.Name = "Sapper";
             this.Text = "Sapper";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Sapper_FormClosing);
             this.Load += new System.EventHandler(this.Sapper_Load);
             this.panel_Header.ResumeLayout(false);
             this.panel_Header.PerformLayout();
@@ -355,10 +350,8 @@ namespace Sapper
         private System.Windows.Forms.ToolStripMenuItem bt__Size9x9;
         private System.Windows.Forms.ToolStripMenuItem bt__Size18x18;
         private System.Windows.Forms.ToolStripMenuItem bt__Size36x36;
-        private System.Windows.Forms.ToolStripMenuItem bt_menu_game_ResultsTable;
-        private System.Windows.Forms.ToolStripMenuItem bt_menu_game_HightScore;
+        private System.Windows.Forms.ToolStripMenuItem bt_menu_game_HighScore;
         private System.Windows.Forms.ToolStripMenuItem bt_menu_game_Exit;
-        private System.Windows.Forms.ToolStripMenuItem bt_reference;
         private System.Windows.Forms.ToolStripMenuItem bt_aboutGame;
         private System.Windows.Forms.Panel panel_general;
         private System.Windows.Forms.Panel panel_time;

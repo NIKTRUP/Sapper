@@ -11,3 +11,4 @@ C:\Users\nikol\source\repos\Sapper\Sapper\bin\Debug\Sapper.exe
 C:\Users\nikol\source\repos\Sapper\Sapper\bin\Debug\Sapper.pdb
 C:\Users\nikol\source\repos\Sapper\Sapper\obj\Debug\Sapper.exe
 C:\Users\nikol\source\repos\Sapper\Sapper\obj\Debug\Sapper.pdb
+C:\Users\nikol\source\repos\Sapper\Sapper\obj\Debug\Sapper.HighScoreTableForm.resources
